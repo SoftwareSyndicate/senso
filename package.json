@@ -1,0 +1,35 @@
+{
+  "name": "senso",
+  "version": "1.0.0",
+  "description": "#### 2D platformer using the Ludic game engine",
+  "main": "main.js",
+  "scripts": {
+    "test": "npm run test "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SoftwareSyndicate/senso.git"
+  },
+  "keywords": [
+    "ludic"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SoftwareSyndicate/senso/issues"
+  },
+  "homepage": "https://github.com/SoftwareSyndicate/senso#readme",
+  "devDependencies": {
+    "jspm": "^0.16.36"
+  },
+  "jspm": {
+    "dependencies": {
+      "EiN": "github:SoftwareSyndicate/EiN@dev"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}
