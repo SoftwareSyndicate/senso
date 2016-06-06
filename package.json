@@ -24,7 +24,9 @@
   },
   "jspm": {
     "dependencies": {
-      "EiN": "github:SoftwareSyndicate/EiN@dev"
+      "EiN": "github:SoftwareSyndicate/EiN@dev",
+      "Ludic": "github:SoftwareSyndicate/Ludic@dev",
+      "box2d": "github:SoftwareSyndicate/box2d.js@dev"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",

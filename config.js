@@ -15,11 +15,20 @@ System.config({
 
   map: {
     "EiN": "github:SoftwareSyndicate/EiN@dev",
+    "Ludic": "github:SoftwareSyndicate/Ludic@dev",
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
+    "box2d": "github:SoftwareSyndicate/box2d.js@dev",
     "core-js": "npm:core-js@1.2.6",
     "github:SoftwareSyndicate/EiN@dev": {
       "lodash": "npm:lodash@3.10.1"
+    },
+    "github:SoftwareSyndicate/Ludic@dev": {
+      "jquery": "github:components/jquery@2.2.4"
+    },
+    "github:SoftwareSyndicate/box2d.js@dev": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "path": "github:jspm/nodelibs-path@0.1.0"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
