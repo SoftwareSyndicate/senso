@@ -7,9 +7,9 @@ export default class Senso extends BaseApp {
     super(config);
 
     //TODO REFACTOR screen manager, should probably extend
-    /* this.screenListener = Ludic.screenManager.newListener(true);
-       this.gameScreen = new GameScreen();
-       Ludic.screenManager.addScreen(this.gameScreen, true); */
+    this.screenListener = Ludic.screenManager.newListener(true);
+    this.gameScreen = new GameScreen();
+    Ludic.screenManager.addScreen(this.gameScreen, true);
   }
 
   step(delta){

@@ -52,6 +52,7 @@ export default class Senshi extends BaseEntity{
   }
 
   draw(ctx){
+
     let pos = this.getPosition(true);
 
     ctx.translate(pos.x, pos.y);

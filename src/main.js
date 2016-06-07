@@ -36,5 +36,3 @@ var config = {
 
 var app = new Senso(config);
 app.run();
-
-console.log("Hey");

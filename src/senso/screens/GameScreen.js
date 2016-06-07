@@ -21,7 +21,7 @@ class GameScreen extends Screen {
   }
 
   step(delta){
-    /* this.currentLevel.step(delta); */
+    this.currentLevel.step(delta);
   }
 
   onDestroy(){
