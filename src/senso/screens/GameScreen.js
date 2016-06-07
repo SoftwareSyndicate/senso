@@ -1,10 +1,10 @@
-import Box2D from 'box2d';
-import Ludic from 'Ludic';
-import {Screen} from 'Ludic';
+import Box2D from 'box2d'
+import Ludic from 'Ludic'
+import {Screen} from 'Ludic'
 import {DebugDraw} from 'box2d'
 import {World} from 'box2d'
 
-/* import Level1 from '../levels/Level1'; */
+import Level1 from '../levels/level1'
 
 class GameScreen extends Screen {
   constructor() {
@@ -17,7 +17,7 @@ class GameScreen extends Screen {
     this.world.SetDebugDraw(this.debugDraw);
     this.debugDraw.SetFlags(DebugDraw.e_shapeBit);
 
-    /* this.currentLevel = new Level1(Ludic.canvas, this.world); */
+    this.currentLevel = new Level1(Ludic.canvas, this.world);
   }
 
   step(delta){
