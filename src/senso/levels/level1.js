@@ -2,6 +2,7 @@ import {ClearSystem, Camera, CameraSystem, Vector2, InputSystem} from 'Ludic'
 import {default as em, BaseSystem} from 'EiN';
 import BaseLevel from './BaseLevel'
 import RenderSystem from '../systems/renderSystem.js'
+import SenshiMovementSystem from '../systems/senshiMovementSystem.js'
 import Box2dSystem from '../systems/box2dSystem.js'
 import Senshi from '../entities/senshi'
 
@@ -52,6 +53,9 @@ export default class Level1 extends BaseLevel {
     });
     em.addSystem(this.inputSystem);
 
+
+    this.senshiMovementSystem = new SenshiMovementSystem(true, 3);
+    em.addSystem(this.senshiMovementSystem);
 
   }
 
