@@ -2,7 +2,7 @@ import {BaseEntity} from 'EiN';
 import Box2D from 'box2d';
 
 export default class Senshi extends BaseEntity{
-  constructor(x, y, width = 1, height = 1, color, active = true, priority = -1, world, isDynamic){
+  constructor(x, y, width = 1, height = 1, color, active = true, priority = -1, world, isDynamic = true){
     super(active, priority);
     this.x = x;
     this.y = y;
@@ -26,12 +26,12 @@ export default class Senshi extends BaseEntity{
     var shape = new Box2D.b2PolygonShape();
     shape.SetAsBox(this.width / 2, this.height / 2, );
     this.fixture = this.body.CreateFixture(shape, 0.0);
-    this.fixture.SetRestitution(1.0);
+    // this.fixture.SetRestitution(1.0);
     this.fixture.SetDensity(1.0);
     this.body.SetAwake(1);
     this.body.SetActive(1);
-    this.body.SetGravityScale(0);
-    this.body.SetLinearVelocity(new Box2D.b2Vec2(20, 0));
+    // this.body.SetGravityScale(0);
+    // this.body.SetLinearVelocity(new Box2D.b2Vec2(20, 0));
     this.body.ResetMassData();
   }
 
@@ -62,4 +62,3 @@ export default class Senshi extends BaseEntity{
     ctx.fillRect(pos.x - this.width / 2, pos.y - this.height / 2, this.width, this.height);
   }
 };
-

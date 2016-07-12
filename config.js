@@ -14,6 +14,9 @@ System.config({
   },
 
   map: {
+    "entities": "src/senso/entities",
+    "systems": "src/senso/systems",
+
     "EiN": "github:SoftwareSyndicate/EiN@dev",
     "Ludic": "github:SoftwareSyndicate/Ludic@dev",
     "babel": "npm:babel-core@5.8.38",

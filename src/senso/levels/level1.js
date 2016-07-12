@@ -1,10 +1,11 @@
 import {ClearSystem, Camera, CameraSystem, Vector2, InputSystem} from 'Ludic'
 import {default as em, BaseSystem} from 'EiN';
 import BaseLevel from './BaseLevel'
-import RenderSystem from '../systems/renderSystem.js'
-import SenshiMovementSystem from '../systems/senshiMovementSystem.js'
-import Box2dSystem from '../systems/box2dSystem.js'
-import Senshi from '../entities/senshi'
+import RenderSystem from 'systems/renderSystem.js'
+import SenshiMovementSystem from 'systems/senshiMovementSystem.js'
+import SenshiCreationSystem from 'systems/senshiCreationSystem.js'
+import Box2dSystem from 'systems/box2dSystem.js'
+import Senshi from 'entities/senshi'
 
 export default class Level1 extends BaseLevel {
   constructor(canvas, world){
@@ -57,23 +58,15 @@ export default class Level1 extends BaseLevel {
     this.senshiMovementSystem = new SenshiMovementSystem(true, 3);
     em.addSystem(this.senshiMovementSystem);
 
+    this.senshiCreationSystem = new SenshiCreationSystem(true, 3);
+    this.senshiCreationSystem.camera = this.camera;
+    this.senshiCreationSystem.world = this.world;
+    em.addSystem(this.senshiCreationSystem);
+
   }
 
   initEntities(){
-    let size = 12;
-    let bounds = this.camera.getViewportBounds();
-    let width = bounds.w * 2;
-    let height = 2;
-    let floorY = bounds.y - height / 2;
-    let x = 0;
 
-    var senshi =  new Senshi(0, bounds.y + 3, size, size/2, "#2c3e50", true, 1, this.world, false);
-
-    senshi.fixture.SetRestitution(0);
-    senshi.isFirstBlock = true;
-
-
-    em.addEntity(senshi);
   }
 
   step(delta){

@@ -10,7 +10,7 @@ class GameScreen extends Screen {
   constructor() {
     super();
 
-    this.gravity = new Box2D.b2Vec2(0.0, -10.0);
+    this.gravity = new Box2D.b2Vec2(0.0, 0.0);
     this.world = new World(this.gravity);
 
     this.debugDraw = DebugDraw.newDebugger(Ludic.canvas.el);
