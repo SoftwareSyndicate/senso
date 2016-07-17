@@ -9,8 +9,8 @@ export default class SenshiMovementSystem extends BaseSystem {
     this.entityListenerMap = {};
 
     // environment vars describing how players move
-    this.maxVX = 15;
-    this.maxVY = 10;
+    this.maxVX = 25;
+    this.maxVY = 25;
 
 
     this.registerEvents();
@@ -46,10 +46,16 @@ export default class SenshiMovementSystem extends BaseSystem {
       id: entity._id,
       listener: Ludic.input.newEventListener({
         keyConfig: {
-          'w.once': this.moveEntity('y', entity, this.maxVY, 's'),
-          'a.once': this.moveEntity('x', entity, -this.maxVX, 'd'),
-          's.once': this.moveEntity('y', entity, -this.maxVY, 'w'),
-          'd.once': this.moveEntity('x', entity, this.maxVX, 'a')
+          'w.once': 'up',
+          'a.once': 'left',
+          's.once': 'down',
+          'd.once': 'right'
+        },
+        methods: {
+          left: this.moveEntity('x', entity, -this.maxVX, 'd'),
+          right: this.moveEntity('x', entity, this.maxVX, 'a'),
+          up: this.moveEntity('y', entity, this.maxVY, 's'),
+          down: this.moveEntity('y', entity, -this.maxVY, 'w')
         }
       }, true)
     }
@@ -74,7 +80,7 @@ export default class SenshiMovementSystem extends BaseSystem {
       if(keyDown){
         desiredVel = max;
         // this.running = true;
-      } else if(!e.allKeys[oddKey]) {
+      } else if(e.type === 'gamepadButtonEvent' || !e.allKeys[oddKey]) {
         desiredVel = 0;
         // this.running = false;
       } else if(e.allKeys[oddKey]) {
