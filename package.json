@@ -26,6 +26,7 @@
     "dependencies": {
       "EiN": "github:SoftwareSyndicate/EiN@dev",
       "Ludic": "github:SoftwareSyndicate/Ludic@dev",
+      "animejs": "github:SoftwareSyndicate/anime@chaining",
       "box2d": "github:SoftwareSyndicate/box2d@dev"
     },
     "devDependencies": {

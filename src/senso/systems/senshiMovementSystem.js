@@ -41,23 +41,29 @@ export default class SenshiMovementSystem extends BaseSystem {
 
   // instance methods
   createListener(entity){
+    let listenerConfig = {
+      keyConfig: {
+        'w.once': 'up',
+        'a.once': 'left',
+        's.once': 'down',
+        'd.once': 'right'
+      },
+      methods: {
+        left: this.moveEntity('x', entity, -this.maxVX, 'd'),
+        right: this.moveEntity('x', entity, this.maxVX, 'a'),
+        up: this.moveEntity('y', entity, this.maxVY, 's'),
+        down: this.moveEntity('y', entity, -this.maxVY, 'w')
+      }
+    };
+
+    if(entity.hasOwnProperty('_gamepadIndex')){
+      listenerConfig.gamepadIndex = entity._gamepadIndex;
+    }
+
     this.entityListenerMap[entity._id] = {
       entity,
       id: entity._id,
-      listener: Ludic.input.newEventListener({
-        keyConfig: {
-          'w.once': 'up',
-          'a.once': 'left',
-          's.once': 'down',
-          'd.once': 'right'
-        },
-        methods: {
-          left: this.moveEntity('x', entity, -this.maxVX, 'd'),
-          right: this.moveEntity('x', entity, this.maxVX, 'a'),
-          up: this.moveEntity('y', entity, this.maxVY, 's'),
-          down: this.moveEntity('y', entity, -this.maxVY, 'w')
-        }
-      }, true)
+      listener: Ludic.input.newEventListener(listenerConfig, true)
     }
   }
 

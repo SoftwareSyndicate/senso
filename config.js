@@ -14,15 +14,15 @@ System.config({
   },
 
   map: {
-    "entities": "src/senso/entities",
-    "systems": "src/senso/systems",
-
     "EiN": "github:SoftwareSyndicate/EiN@dev",
     "Ludic": "github:SoftwareSyndicate/Ludic@dev",
+    "animejs": "github:SoftwareSyndicate/anime@chaining",
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "box2d": "github:SoftwareSyndicate/box2d.js@dev",
     "core-js": "npm:core-js@1.2.6",
+    "entities": "src/senso/entities",
+    "systems": "src/senso/systems",
     "github:SoftwareSyndicate/EiN@dev": {
       "lodash": "npm:lodash@3.10.1"
     },

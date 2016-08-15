@@ -1,4 +1,4 @@
-import {ClearSystem, Camera, CameraSystem, Vector2, InputSystem} from 'Ludic'
+import {ClearSystem, Camera, CameraSystem, Vector2, InputSystem, HUD, Text} from 'Ludic'
 import {default as em, BaseSystem} from 'EiN';
 import BaseLevel from './BaseLevel'
 import RenderSystem from 'systems/renderSystem.js'
@@ -6,6 +6,8 @@ import SenshiMovementSystem from 'systems/senshiMovementSystem.js'
 import SenshiCreationSystem from 'systems/senshiCreationSystem.js'
 import Box2dSystem from 'systems/box2dSystem.js'
 import Senshi from 'entities/senshi'
+
+import anime from 'animejs'
 
 export default class Level1 extends BaseLevel {
   constructor(canvas, world){
@@ -40,6 +42,19 @@ export default class Level1 extends BaseLevel {
 
     this.renderSystem = new RenderSystem(true, 30, this.ctx);
     em.addSystem(this.renderSystem);
+
+
+
+    this.hud = new HUD(this.camera);
+    this.hudSystem = new BaseSystem(true, 31, (delta)=>{
+      this.hud.update(delta);
+    });
+    em.addSystem(this.hudSystem);
+
+    // testing hud
+    let text = new Text("this is a string", 0, 0, {fontSize: 44});
+    this.hud.addElement(text, 'mytext');
+
 
     this.debugDrawSystem = new BaseSystem(true, 29, (delta)=>{
       this.world.drawDebug();
