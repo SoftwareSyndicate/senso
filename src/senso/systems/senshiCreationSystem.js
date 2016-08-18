@@ -1,7 +1,7 @@
 import {default as em, BaseSystem} from 'EiN'
 import Senshi from 'entities/senshi'
 
-const senshiColors = ["#2c3e50", '#607eeb'];
+const senshiColors = ["#2c3e50", '#607eeb', '#BB2A0B', '#6EE219'];
 let senshiColorsPointer = 0;
 
 export default class SenshiCreationSystem extends BaseSystem {
@@ -39,8 +39,7 @@ export default class SenshiCreationSystem extends BaseSystem {
 
   // instance methods
   createSenshi(keydown, event){
-    // temp; only one player for now
-    if(this.entities.length >= 2 || !keydown){
+    if(this.entities.length >= 4 || !keydown){
       return;
     }
 
