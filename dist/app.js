@@ -63525,8 +63525,6 @@ $__System.register('8c', ['20', '1b', '1c', '1d', '1e', '1f', '8b'], function (_
         console.warn("Unknown config of Box2D. Failed to load library");return {};
       };
 
-      console.log(Box2D, _Box2D, __Box2D, window.Box2D);
-
       _export('Box2D', _Box2D);
 
       _export('default', _Box2D);

@@ -7,7 +7,9 @@
     "build": "jspm bundle-sfx src/main.js dist/app.js",
     "electron-build": "npm run build && electron electron.js",
     "electron": "electron electron.js",
-    "electron-test": "electron electron.js http://localhost:8080"
+    "electron-test": "electron electron.js http://localhost:8080",
+
+    "deploy-gh": "npm run build && git subtree push --prefix dist origin gh-pages"
   },
   "repository": {
     "type": "git",
