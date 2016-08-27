@@ -4,12 +4,12 @@
   "description": "#### 2D platformer using the Ludic game engine",
   "main": "main.js",
   "scripts": {
-    "build": "jspm bundle-sfx src/main.js dist/app.js",
+    "build": "./build.sh",
     "electron-build": "npm run build && electron electron.js",
     "electron": "electron electron.js",
     "electron-test": "electron electron.js http://localhost:8080",
 
-    "deploy-gh": "git subtree push --prefix dist origin gh-pages"
+    "deploy-gh": "git subtree push --prefix gh-pages origin gh-pages"
   },
   "repository": {
     "type": "git",
