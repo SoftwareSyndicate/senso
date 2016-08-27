@@ -9,7 +9,7 @@
     "electron": "electron electron.js",
     "electron-test": "electron electron.js http://localhost:8080",
 
-    "deploy-gh": "git subtree push --prefix gh-pages origin gh-pages"
+    "deploy-gh": "git push origin `git subtree split --prefix gh-pages master`:gh-pages --force"
   },
   "repository": {
     "type": "git",
