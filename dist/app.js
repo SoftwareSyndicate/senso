@@ -64610,15 +64610,6 @@ $__System.register('91', ['3', '6', '7', '8', '90', 'a'], function (_export) {
   };
 });
 $__System.register('1', ['91', 'a', 'b'], function (_export) {
-
-  // import {ipcRenderer} from 'electron'
-  // console.log('electron', ipcRenderer);
-  // console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
-  //
-  // ipcRenderer.on('asynchronous-reply', (event, arg) => {
-  //   console.log(arg) // prints "pong"
-  // })
-
   'use strict';
 
   var Senso, AssetManager, Ludic, RubeAssetLoader, config, app;
@@ -64632,6 +64623,9 @@ $__System.register('1', ['91', 'a', 'b'], function (_export) {
       RubeAssetLoader = _b.RubeAssetLoader;
     }],
     execute: function () {
+
+      console.log('testing something');
+
       AssetManager.addLoader(['rube', 'rubeImage'], RubeAssetLoader);
 
       //Config Ludic?

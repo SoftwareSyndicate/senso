@@ -3,13 +3,7 @@ import {Ludic} from 'Ludic'
 import {RubeAssetLoader} from 'box2d'
 import Senso from './senso/senso'
 
-// import {ipcRenderer} from 'electron'
-// console.log('electron', ipcRenderer);
-// console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
-//
-// ipcRenderer.on('asynchronous-reply', (event, arg) => {
-//   console.log(arg) // prints "pong"
-// })
+console.log('testing something');
 
 AssetManager.addLoader(['rube','rubeImage'], RubeAssetLoader);
 
