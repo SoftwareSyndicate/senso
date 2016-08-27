@@ -48,7 +48,9 @@ export default class SenshiMovementSystem extends BaseSystem {
         'w.once': 'up',
         'a.once': 'left',
         's.once': 'down',
-        'd.once': 'right'
+        'd.once': 'right',
+        'q.once': 'l1',
+        'e.once': 'r1',
       },
       methods: {
         left: this.moveEntity('x', entity, -this.maxVX, 'd'),
@@ -114,7 +116,7 @@ export default class SenshiMovementSystem extends BaseSystem {
   rotateEntity(entity, right){
 
     return (keyDown, e)=>{
-
+      console.log('on rotate: ', keyDown);
       if(keyDown){
         entity.body.SetAngularVelocity(right ? -this.maxRotation : this.maxRotation);
       } else {

@@ -1,4 +1,4 @@
-import {ClearSystem, Camera, CameraSystem, Vector2, InputSystem, HUD, Text} from 'Ludic'
+import {ClearSystem, Camera, CameraSystem, Vector2, InputSystem, HUD, Text, MenuDialog} from 'Ludic'
 import {default as em, BaseSystem} from 'EiN';
 import BaseLevel from './BaseLevel'
 import RenderSystem from 'systems/renderSystem.js'
@@ -55,6 +55,18 @@ export default class Level1 extends BaseLevel {
     let text = new Text("this is a string", 0, 0, {fontSize: 44});
     this.hud.addElement(text, 'mytext');
 
+    this.menu = new MenuDialog({
+      position: 'center',
+      width:200,
+      height:150,
+      borderWidth: 3,
+      title: "this is a dialog"
+    })
+    this.hud.addElement(this.menu, 'menu');
+    this.menu.addMenuItem(new MenuDialog.MenuItem('Item One'))
+    this.menu.addMenuItem(new MenuDialog.MenuItem('Item Two'))
+    this.menu.addMenuItem(new MenuDialog.MenuItem('Item Three'))
+
 
     this.debugDrawSystem = new BaseSystem(true, 29, (delta)=>{
       this.world.drawDebug();
@@ -78,6 +90,20 @@ export default class Level1 extends BaseLevel {
     this.senshiCreationSystem.world = this.world;
     em.addSystem(this.senshiCreationSystem);
 
+
+    this.listener = Ludic.input.newEventListener({
+      keyConfig: {
+        'esc.once.down': 'start'
+      },
+      methods: {
+        start: (keyDown,e)=>{
+          if(keyDown && !e.button.lastState.pressed){
+            this.menu.toggle();
+          }
+        }
+      },
+      binder: this
+    }, true)
   }
 
   initEntities(){
