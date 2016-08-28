@@ -23,12 +23,10 @@ export default class Level1 extends BaseLevel {
 
   initSystems(){
     this.clearSystem = new BaseSystem(true, -100, (delta)=>{
-      this.ctx.restore();
       // this.ctx.fillStyle = this.color;
       this.ctx.fillStyle = 'white';
       this.ctx.clearRect(0, 0, this.canvas.width(), this.canvas.height());
       this.ctx.fillRect(0, 0, this.canvas.width(), this.canvas.height());
-      this.ctx.save();
     });
     em.addSystem(this.clearSystem);
 
