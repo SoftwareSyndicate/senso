@@ -13,9 +13,9 @@ class GameScreen extends Screen {
     this.gravity = new Box2D.b2Vec2(0.0, 0.0);
     this.world = new World(this.gravity);
 
-    this.debugDraw = DebugDraw.newDebugger(Ludic.canvas.el);
-    this.world.SetDebugDraw(this.debugDraw);
-    this.debugDraw.SetFlags(DebugDraw.e_shapeBit);
+    // this.debugDraw = DebugDraw.newDebugger(Ludic.canvas.el);
+    // this.world.SetDebugDraw(this.debugDraw);
+    // this.debugDraw.SetFlags(DebugDraw.e_shapeBit);
 
     this.currentLevel = new Level1(Ludic.canvas, this.world);
   }

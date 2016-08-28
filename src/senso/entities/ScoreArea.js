@@ -2,12 +2,11 @@ import {BaseEntity} from 'EiN';
 import Box2D from 'box2d';
 
 export default class ScoreArea extends BaseEntity{
-  constructor(x, y, width = 1, height = 1, color, active = true, priority = -1, world, isDynamic = true){
+  constructor(x, y, radius = 1, color, active = true, priority = -1, world, isDynamic = true){
     super(active, priority);
     this.x = x;
     this.y = y;
-    this.width = width;
-    this.height = height;
+    this.radius = radius;
     this.world = world;
     this.isDynamic = isDynamic;
     this.color = color;
@@ -24,8 +23,8 @@ export default class ScoreArea extends BaseEntity{
     bd.set_position(new Box2D.b2Vec2(this.x, this.y));
     this.body = this.world.CreateBody(bd);
 
-    var shape = new Box2D.b2PolygonShape();
-    shape.SetAsBox(this.width / 2, this.height / 2, );
+    var shape = new Box2D.b2CircleShape();
+    shape.set_m_radius(this.radius);
     this.fixture = this.body.CreateFixture(shape, 0.0);
     // this.fixture.SetRestitution(1.0);
     this.fixture.SetDensity(1.0);
@@ -54,10 +53,9 @@ export default class ScoreArea extends BaseEntity{
 
     let pos = this.getPosition(true);
 
-    ctx.translate(pos.x, pos.y);
-    ctx.rotate(this.body.GetAngle());
-    ctx.translate(-(pos.x), -(pos.y));
+    ctx.beginPath();
     ctx.fillStyle = this.color;
-    ctx.fillRect(pos.x - this.width / 2, pos.y - this.height / 2, this.width, this.height);
+    ctx.arc(pos.x, pos.y, this.radius, 0, 2*Math.PI, false);
+    ctx.fill();
   }
 };

@@ -27,7 +27,7 @@ export default class ScoreSystem extends BaseSystem {
     var contact = scoreArea.world.GetContactList();
     while(true){
       this.senshis.forEach((senshi) => {
-        if(senshi.fixture.e === contact.GetFixtureB().e) {
+        if(senshi.fixture.e === contact.GetFixtureA().e) {
           senshi.score++;
         }
       })
