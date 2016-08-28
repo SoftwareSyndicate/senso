@@ -4,6 +4,7 @@ import BaseLevel from './BaseLevel'
 import RenderSystem from 'systems/renderSystem.js'
 import SenshiMovementSystem from 'systems/senshiMovementSystem.js'
 import SenshiCreationSystem from 'systems/senshiCreationSystem.js'
+import ScoreRenderSystem from 'systems/scoreRenderSystem.js'
 import Box2dSystem from 'systems/box2dSystem.js'
 import Senshi from 'entities/senshi'
 import ScoreArea from 'entities/ScoreArea'
@@ -50,9 +51,9 @@ export default class Level1 extends BaseLevel {
     });
     em.addSystem(this.hudSystem);
 
-    // testing hud
-    let text = new Text("this is a string", 0, 0, {fontSize: 44});
-    this.hud.addElement(text, 'mytext');
+    // score render system
+    this.scoreRenderSystem = new ScoreRenderSystem(this.hud);
+    em.addSystem(this.scoreRenderSystem);
 
     this.menu = new MenuDialog({
       position: 'center',
