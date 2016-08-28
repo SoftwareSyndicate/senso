@@ -5,8 +5,6 @@ export default class ScoreSystem extends BaseSystem {
     super(active, priority);
     this.ctx = ctx;
     this.entityProps = ['draw'];
-
-
   }
 
   //Overide
@@ -21,8 +19,12 @@ export default class ScoreSystem extends BaseSystem {
   //Overide
   update(delta){
     /* if entity is in sensor, add 1 to entity.score */
-    this.enitities.forEach(entity => {
-      /* entity. */
+    this.entities.forEach(entity => {
+      let pos = entity.getPosition(true);
+      if(pos.x > -5 && pos.y > -5 && pos.x < 5 && pos.y < 5){
+        console.log("winning");
+        entity.score++;
+      }
     });
   }
 };

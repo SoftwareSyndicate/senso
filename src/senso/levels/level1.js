@@ -6,6 +6,7 @@ import SenshiMovementSystem from 'systems/senshiMovementSystem.js'
 import SenshiCreationSystem from 'systems/senshiCreationSystem.js'
 import ScoreRenderSystem from 'systems/scoreRenderSystem.js'
 import Box2dSystem from 'systems/box2dSystem.js'
+import ScoreSystem from 'systems/ScoreSystem'
 import Senshi from 'entities/senshi'
 import ScoreArea from 'entities/ScoreArea'
 
@@ -76,6 +77,9 @@ export default class Level1 extends BaseLevel {
     this.box2dSystem = new Box2dSystem(true, 20, this.world);
     em.addSystem(this.box2dSystem);
 
+    this.scoreSystem = new ScoreSystem();
+    em.addSystem(this.scoreSystem);
+
     this.inputSystem = new BaseSystem(true, 1, (delta)=>{
       Ludic.input.update(delta);
     });
@@ -107,15 +111,15 @@ export default class Level1 extends BaseLevel {
   }
 
   initEntities(){
-    let size = 12;
-    let bounds = this.camera.getViewportBounds();
-    let width = bounds.w * 2;
-    let height = 2;
-    let floorY = bounds.y - height / 2;
-    let x = 0;
+    /* let size = 12;
+       let bounds = this.camera.getViewportBounds();
+       let width = bounds.w * 2;
+       let height = 2;
+       let floorY = bounds.y - height / 2;
+       let x = 0;
 
-    var scoreArea =  new ScoreArea(0, bounds.y / 2, size, size/2, "rgba(255, 0, 0, .2)", true, 1, this.world);
-    em.addEntity(scoreArea);
+       var scoreArea =  new ScoreArea(0, bounds.y / 2, size, size/2, "rgba(255, 0, 0, .2)", true, 1, this.world);
+       em.addEntity(scoreArea); */
   }
 
   update(delta){
