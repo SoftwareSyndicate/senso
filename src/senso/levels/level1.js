@@ -44,8 +44,6 @@ export default class Level1 extends BaseLevel {
     this.renderSystem = new RenderSystem(true, 30, this.ctx);
     em.addSystem(this.renderSystem);
 
-
-
     this.hud = new HUD(this.camera);
     this.hudSystem = new BaseSystem(true, 31, (delta)=>{
       this.hud.update(delta);
@@ -68,11 +66,10 @@ export default class Level1 extends BaseLevel {
     this.menu.addMenuItem(new MenuDialog.MenuItem('Item Two'))
     this.menu.addMenuItem(new MenuDialog.MenuItem('Item Three'))
 
-
-    this.debugDrawSystem = new BaseSystem(true, 29, (delta)=>{
-      this.world.drawDebug();
-    });
-    em.addSystem(this.debugDrawSystem);
+    // this.debugDrawSystem = new BaseSystem(true, 29, (delta)=>{
+    //   this.world.drawDebug();
+    // });
+    // em.addSystem(this.debugDrawSystem);
 
     this.box2dSystem = new Box2dSystem(true, 20, this.world);
     em.addSystem(this.box2dSystem);

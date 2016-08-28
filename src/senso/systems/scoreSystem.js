@@ -8,12 +8,10 @@ export default class ScoreSystem extends BaseSystem {
 
   //Overide
   onEntityAdded(manager){
-    this.senshis = manager.getEntitiesByClassName('Senshi');
     this.scoreArea = manager.getEntitiesByClassName('ScoreArea')[0];
   }
 
   onEntityRemoved(manager){
-    this.senshis = manager.getEntitiesByClassName('Senshi');
     this.scoreArea = manager.getEntitiesByClassName('ScoreArea')[0];
   }
 
@@ -21,17 +19,17 @@ export default class ScoreSystem extends BaseSystem {
   update(delta){
 
     /* if entity is in sensor, add 1 to entity.score */
-    var contact = this.scoreArea.body.GetContactList();
+    let contact = this.scoreArea.body.GetContactList();
     this.scoreArea.color = "rgba(255, 0, 0, .2)";
 
     while(true){
       if(contact.get_contact().IsTouching()) {
         this.scoreArea.color = "rgba(255, 0, 0, .4)";
-        this.senshis.forEach((senshi) => {
-          if(senshi.body.e === contact.get_other().e) {
-            senshi.score++;
-          }
-        })
+
+        let senshi = contact.get_other().entityData;
+        if(senshi) {
+          senshi.score += parseInt(delta * 200);
+        }
       }
 
       contact = contact.get_next();

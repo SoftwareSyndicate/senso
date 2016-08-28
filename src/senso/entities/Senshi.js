@@ -25,14 +25,9 @@ export default class Senshi extends BaseEntity{
     this.body = this.world.CreateBody(bd);
 
     var shape = new Box2D.b2PolygonShape();
-    shape.SetAsBox(this.width / 2, this.height / 2, );
+    shape.SetAsBox(this.width / 2, this.height / 2);
     this.fixture = this.body.CreateFixture(shape, 0.0);
-    // this.fixture.SetRestitution(1.0);
     this.fixture.SetDensity(1.0);
-    this.body.SetAwake(1);
-    this.body.SetActive(1);
-    // this.body.SetGravityScale(0);
-    // this.body.SetLinearVelocity(new Box2D.b2Vec2(20, 0));
     this.body.ResetMassData();
   }
 

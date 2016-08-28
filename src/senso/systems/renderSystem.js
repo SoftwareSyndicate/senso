@@ -18,12 +18,10 @@ export default class RenderSystem extends BaseSystem {
 
   //Overide
   update(delta){
-    this.ctx.save();
     this.entities.forEach(entity => {
       this.ctx.save();
       entity.draw(this.ctx);
       this.ctx.restore();
     });
-    this.ctx.restore();
   }
 };
