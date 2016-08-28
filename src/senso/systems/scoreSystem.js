@@ -19,18 +19,25 @@ export default class ScoreSystem extends BaseSystem {
 
   //Overide
   update(delta){
-    if(!this.scoreArea) {
-      return;
-    }
+    // if(!this.scoreArea) {
+    //   return;
+    // }
+
     /* if entity is in sensor, add 1 to entity.score */
     var scoreArea = this.scoreArea[0];
     var contact = scoreArea.world.GetContactList();
+    scoreArea.color = "rgba(255, 0, 0, .2)";
+
     while(true){
-      this.senshis.forEach((senshi) => {
-        if(senshi.fixture.e === contact.GetFixtureA().e) {
-          senshi.score++;
-        }
-      })
+      if(contact.IsTouching()) {
+        scoreArea.color = "rgba(255, 0, 0, .4)";
+
+        this.senshis.forEach((senshi) => {
+          if(senshi.fixture.e === contact.GetFixtureA().e) {
+            senshi.score++;
+          }
+        })
+      }
 
       contact = contact.GetNext();
       if(contact.e === 0) {
