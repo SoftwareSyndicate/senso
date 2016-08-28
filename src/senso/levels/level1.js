@@ -113,7 +113,7 @@ export default class Level1 extends BaseLevel {
   }
 
   initEntities(){
-    /* let size = 12;
+       let size = 12;
        let bounds = this.camera.getViewportBounds();
        let width = bounds.w * 2;
        let height = 2;
@@ -121,7 +121,7 @@ export default class Level1 extends BaseLevel {
        let x = 0;
 
        var scoreArea =  new ScoreArea(0, bounds.y / 2, size, size/2, "rgba(255, 0, 0, .2)", true, 1, this.world);
-       em.addEntity(scoreArea); */
+       em.addEntity(scoreArea);
   }
 
   update(delta){
