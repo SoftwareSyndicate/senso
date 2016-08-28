@@ -12,6 +12,7 @@ export default class Senshi extends BaseEntity{
     this.isDynamic = isDynamic;
     this.color = color;
     this.current = true;
+    this.score = 0;
     this.createB2D();
   }
 
