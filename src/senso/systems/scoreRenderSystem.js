@@ -22,7 +22,10 @@ export default class ScoreRenderSystem extends BaseSystem {
     let newEnt = ents.find((ent)=>{
       return ent._id == id;
     })
-    this.createScore(newEnt, ents.length);
+
+    if(newEnt){
+      this.createScore(newEnt, ents.length);
+    }
     this.entities = ents;
   }
 
