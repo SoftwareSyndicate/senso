@@ -94,6 +94,8 @@ export default class Level1 extends BaseLevel {
     this.senshiCreationSystem.world = this.world;
     em.addSystem(this.senshiCreationSystem);
 
+    this.scoreSystem = new ScoreSystem(true, 3);
+    em.addSystem(this.scoreSystem);
 
     this.listener = Ludic.input.newEventListener({
       keyConfig: {
