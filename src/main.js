@@ -3,8 +3,6 @@ import {Ludic} from 'Ludic'
 import {RubeAssetLoader} from 'box2d'
 import Senso from './senso/senso'
 
-console.log('testing something');
-
 AssetManager.addLoader(['rube','rubeImage'], RubeAssetLoader);
 
 //Config Ludic?

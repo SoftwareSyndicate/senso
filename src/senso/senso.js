@@ -1,8 +1,8 @@
-import {BaseApp} from 'Ludic';
+import {App} from 'Ludic';
 import Ludic from 'Ludic';
 import GameScreen from './screens/GameScreen';
 
-export default class Senso extends BaseApp {
+export default class Senso extends App {
   constructor(config){
     super(config);
 
@@ -12,7 +12,7 @@ export default class Senso extends BaseApp {
     Ludic.screenManager.addScreen(this.gameScreen, true);
   }
 
-  step(delta){
-    Ludic.screenManager.step(delta);
+  update(delta){
+    Ludic.screenManager.update(delta);
   }
 }

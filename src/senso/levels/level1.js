@@ -77,7 +77,7 @@ export default class Level1 extends BaseLevel {
     em.addSystem(this.box2dSystem);
 
     this.inputSystem = new BaseSystem(true, 1, (delta)=>{
-      Ludic.input.step(delta);
+      Ludic.input.update(delta);
     });
     em.addSystem(this.inputSystem);
 
@@ -110,7 +110,7 @@ export default class Level1 extends BaseLevel {
 
   }
 
-  step(delta){
+  update(delta){
     if(!this.lost){
       em.update(delta);
     }

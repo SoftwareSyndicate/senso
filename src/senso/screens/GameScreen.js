@@ -20,8 +20,8 @@ class GameScreen extends Screen {
     this.currentLevel = new Level1(Ludic.canvas, this.world);
   }
 
-  step(delta){
-    this.currentLevel.step(delta);
+  update(delta){
+    this.currentLevel.update(delta);
   }
 
   onDestroy(){
