@@ -5,6 +5,7 @@ import RenderSystem from 'systems/renderSystem.js'
 import SenshiMovementSystem from 'systems/senshiMovementSystem.js'
 import SenshiCreationSystem from 'systems/senshiCreationSystem.js'
 import Box2dSystem from 'systems/box2dSystem.js'
+import ScoreSystem from 'systems/scoreSystem.js'
 import Senshi from 'entities/senshi'
 import ScoreArea from 'entities/ScoreArea'
 
@@ -89,6 +90,8 @@ export default class Level1 extends BaseLevel {
     this.senshiCreationSystem.world = this.world;
     em.addSystem(this.senshiCreationSystem);
 
+    this.scoreSystem = new ScoreSystem(true, 3);
+    em.addSystem(this.scoreSystem);
 
     this.listener = Ludic.input.newEventListener({
       keyConfig: {
