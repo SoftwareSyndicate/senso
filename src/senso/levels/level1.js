@@ -110,9 +110,11 @@ export default class Level1 extends BaseLevel {
   }
 
   initEntities(){
-       let radius = 6;
-
-       var scoreArea =  new ScoreArea(0, 0, radius, "rgba(255, 0, 0, .2)", true, 1, this.world);
+       let radius = 8;
+       let passiveColor = "rgba(255, 0, 0, .2)";
+       let occupiedColor = "rgba(255, 0, 0, .4)";
+       let contestedColor = "rgba(0, 0, 0, .2)";
+       var scoreArea = new ScoreArea(0, 0, radius, passiveColor, occupiedColor, contestedColor, true, 1, this.world);
        em.addEntity(scoreArea);
   }
 

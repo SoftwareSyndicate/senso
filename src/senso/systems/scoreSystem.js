@@ -20,15 +20,13 @@ export default class ScoreSystem extends BaseSystem {
 
     /* if entity is in sensor, add 1 to entity.score */
     let contact = this.scoreArea.body.GetContactList();
-    this.scoreArea.color = "rgba(255, 0, 0, .2)";
+    let senshisInScoreArea = [];
 
     while(true){
       if(contact.get_contact().IsTouching()) {
-        this.scoreArea.color = "rgba(255, 0, 0, .4)";
-
         let senshi = contact.get_other().entityData;
         if(senshi) {
-          senshi.score += parseInt(delta * 200);
+          senshisInScoreArea.push(senshi);
         }
       }
 
@@ -36,6 +34,15 @@ export default class ScoreSystem extends BaseSystem {
       if(contact.e === 0) {
         break;
       }
+    }
+
+    this.scoreArea.occupied = false;
+    this.scoreArea.contested = false;
+    if(senshisInScoreArea.length == 1) {
+      this.scoreArea.occupied = true;
+      senshisInScoreArea[0].score += parseInt(delta * 200);
+    } else if(senshisInScoreArea.length > 1) {
+      this.scoreArea.contested = true;
     }
   }
 };

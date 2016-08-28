@@ -49,7 +49,7 @@ export default class SenshiCreationSystem extends BaseSystem {
 
     console.log('create senshi', this, arguments);
 
-    let size = 12;
+    let size = 8;
     let bounds = this.camera.getViewportBounds();
     let width = bounds.w * 2;
     let height = 2;

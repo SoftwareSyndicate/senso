@@ -2,15 +2,18 @@ import {BaseEntity} from 'EiN';
 import Box2D from 'box2d';
 
 export default class ScoreArea extends BaseEntity{
-  constructor(x, y, radius = 1, color, active = true, priority = -1, world){
+  constructor(x, y, radius, passiveColor, occupiedColor, contestedColor, active = true, priority = -1, world){
     super(active, priority);
     this.x = x;
     this.y = y;
     this.radius = radius;
     this.world = world;
-    this.color = color;
-    this.current = true;
-    this.score = 0;
+    this.passiveColor = passiveColor;
+    this.occupiedColor = occupiedColor;
+    this.contestedColor = contestedColor;
+
+    this.occupied = false;
+    this.contested = false;
     this.createB2D();
   }
 
@@ -25,28 +28,27 @@ export default class ScoreArea extends BaseEntity{
     this.fixture.SetSensor(true);
   }
 
-  getPosition(easyRead){
-    var pos;
-
-    this.pos = this.body.GetPosition();
-
-    if(easyRead){
-      pos = {
-        x:this.pos.get_x(),
-        y:this.pos.get_y()
-      };
-    } else {
-      pos = this.pos;
-    }
-    return pos;
+  getPosition(){
+    let pos = this.body.GetPosition();
+    return {
+      x: pos.get_x(),
+      y: pos.get_y()
+    };
   }
 
   draw(ctx){
 
-    let pos = this.getPosition(true);
+    let pos = this.getPosition();
+
+    let color = this.passiveColor;
+    if(this.occupied) {
+      color = this.occupiedColor;
+    } else if(this.contested) {
+      color = this.contestedColor;
+    }
 
     ctx.beginPath();
-    ctx.fillStyle = this.color;
+    ctx.fillStyle = color;
     ctx.arc(pos.x, pos.y, this.radius, 0, 2*Math.PI, false);
     ctx.fill();
   }
