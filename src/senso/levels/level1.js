@@ -7,8 +7,10 @@ import SenshiCreationSystem from 'systems/senshiCreationSystem.js'
 import ScoreRenderSystem from 'systems/scoreRenderSystem.js'
 import Box2dSystem from 'systems/box2dSystem.js'
 import ScoreSystem from 'systems/ScoreSystem'
+import CountdownTimerSystem from 'systems/CountdownTimerSystem'
 import Senshi from 'entities/senshi'
 import ScoreArea from 'entities/ScoreArea'
+import CountdownTimer from 'entities/CountdownTimer'
 
 import anime from 'animejs'
 
@@ -94,6 +96,9 @@ export default class Level1 extends BaseLevel {
     this.scoreSystem = new ScoreSystem(true, 3);
     em.addSystem(this.scoreSystem);
 
+    this.timerSystem = new CountdownTimerSystem(true, 3);
+    em.addSystem(this.timerSystem);
+
     this.listener = Ludic.input.newEventListener({
       keyConfig: {
         'esc.once.down': 'start'
@@ -110,12 +115,15 @@ export default class Level1 extends BaseLevel {
   }
 
   initEntities(){
-       let radius = 8;
-       let passiveColor = "rgba(255, 0, 0, .2)";
-       let occupiedColor = "rgba(255, 0, 0, .4)";
-       let contestedColor = "rgba(0, 0, 0, .2)";
-       var scoreArea = new ScoreArea(0, 0, radius, passiveColor, occupiedColor, contestedColor, true, 1, this.world);
-       em.addEntity(scoreArea);
+    let radius = 8;
+    let passiveColor = "rgba(255, 0, 0, .2)";
+    let occupiedColor = "rgba(255, 0, 0, .4)";
+    let contestedColor = "rgba(0, 0, 0, .2)";
+    let scoreArea = new ScoreArea(0, 0, radius, passiveColor, occupiedColor, contestedColor, true, 1, this.world);
+    em.addEntity(scoreArea);
+
+    let timer = new CountdownTimer(this.hud.camera.canvas.width()/2-50, 0, 100, this.hud, true, 1);
+    em.addEntity(timer);
   }
 
   update(delta){
