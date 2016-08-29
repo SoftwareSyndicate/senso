@@ -16,10 +16,17 @@ export default class CountdownTimer extends BaseEntity{
   }
 
   getTextString(){
-    return "Time: " + parseInt(this.seconds);
+    return parseInt(this.seconds);
   }
 
   updateText(){
     this.text.text = this.getTextString();
+    if(this.seconds < 4) {
+      this.text.color = 'rgb(255,0,0)';
+      this.text.setPositionX(this.x - 60*(4 - parseInt(this.seconds)));
+      this.text.setPositionY(this.y - 60*(4 - parseInt(this.seconds)));
+      this.text.setFontSize(1000 * (4 - parseInt(this.seconds))/4);
+
+    }
   }
 };

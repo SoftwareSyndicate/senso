@@ -1,4 +1,4 @@
-import {BaseSystem} from 'EiN'
+import {default as em, BaseSystem} from 'EiN'
 
 export default class CountdownTimerSystem extends BaseSystem {
   constructor(active = true, priority = -1){
@@ -20,6 +20,10 @@ export default class CountdownTimerSystem extends BaseSystem {
     this.timers.forEach((timer) => {
       timer.seconds -= delta;
       timer.updateText();
+      if(timer.seconds < 0) {
+        // console.log(timer);
+        em.removeEntity(timer);
+      }
     });
   }
 };

@@ -122,7 +122,7 @@ export default class Level1 extends BaseLevel {
     let scoreArea = new ScoreArea(0, 0, radius, passiveColor, occupiedColor, contestedColor, true, 1, this.world);
     em.addEntity(scoreArea);
 
-    let timer = new CountdownTimer(this.hud.camera.canvas.width()/2-50, 0, 100, this.hud, true, 1);
+    let timer = new CountdownTimer(this.hud.camera.canvas.width()/2-10, 0, 60, this.hud, true, 1);
     em.addEntity(timer);
   }
 
