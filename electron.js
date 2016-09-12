@@ -5,7 +5,7 @@ const app = electron.app
 const BrowserWindow = electron.BrowserWindow
 
 // determine to run on localhost or from file
-const loadURL = process.argv[2] ? 'http://localhost:8080' : `file://${__dirname}/dist/index.html`
+const loadURL = process.argv[2] ? 'http://localhost:8080' : `file://${__dirname}/gh-pages/index.html`
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
